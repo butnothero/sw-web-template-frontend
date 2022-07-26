@@ -1,4 +1,6 @@
 <script setup lang="ts">
+// TODO: Добавить поддержку слотов
+// Пример: https://www.npmjs.com/package/vue-load-image
 import { getClassMods } from '@/services';
 
 const props = defineProps({
@@ -9,7 +11,7 @@ const props = defineProps({
   },
   alt: {
     type: String,
-    default: 'image',
+    default: 'icon',
     required: true,
   },
   size: {
@@ -24,17 +26,23 @@ const props = defineProps({
 </script>
 
 <template lang="pug">
-q-img.image(
+img.icon(
   :src='src',
   :alt='alt',
   :style='[{ width: size }, { height: size }]',
-  :class='getClassMods("image", classMods)',
+  :class='getClassMods("icon", classMods)',
   loading='lazy'
 )
-  slot
 </template>
 
 <style scoped lang="scss">
-.image {
+.icon {
+  &--white {
+    filter: $color-icon-to-white;
+  }
+
+  &--purple {
+    filter: $color-icon-to-purple;
+  }
 }
 </style>

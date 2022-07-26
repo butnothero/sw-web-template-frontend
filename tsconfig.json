@@ -4,6 +4,7 @@
     "baseUrl": ".",
     // `baseUrl` must be placed on the extending configuration in devland, or paths won't be recognized
     "esModuleInterop": true,
+    "noImplicitAny": false,
     "module": "esnext",
     "moduleResolution": "node",
     // Needed to address https://github.com/quasarframework/app-extension-typescript/issues/36

@@ -7,13 +7,10 @@ import type {
   AxiosWrapperOptions,
   RequestInfoToCollect,
   Interceptors,
-} from '@server/shared/plugins/axios/wrapper/types';
-import { ApiMethodParamsOptions } from '@server/shared/plugins/axios/wrapper/types';
+} from '@/plugins/axios/wrapper/types';
+import { ApiMethodParamsOptions } from '@/plugins/axios/wrapper/types';
 
-export type {
-  ApiMethodParams,
-  AxiosWrapperOptions,
-} from '@server/shared/plugins/axios/wrapper/types';
+export type { ApiMethodParams, AxiosWrapperOptions } from '@/plugins/axios/wrapper/types';
 
 export default class AxiosWrapper {
   static DEFAULT_TIMEOUT = 30 * 1000;
@@ -234,7 +231,7 @@ export default class AxiosWrapper {
   }
 
   get<T = any>(
-    url: string,
+    url = '',
     requestConfig: AxiosRequestConfig = {},
     options: ApiMethodParamsOptions = {},
   ) {
@@ -247,7 +244,7 @@ export default class AxiosWrapper {
   }
 
   post<T = any>(
-    url: string,
+    url = '',
     data: unknown = undefined,
     requestConfig: AxiosRequestConfig = {},
     options: ApiMethodParamsOptions = {},
@@ -262,7 +259,7 @@ export default class AxiosWrapper {
   }
 
   put<T = any>(
-    url: string,
+    url = '',
     data: unknown = undefined,
     requestConfig: AxiosRequestConfig = {},
     options: ApiMethodParamsOptions = {},
@@ -277,7 +274,7 @@ export default class AxiosWrapper {
   }
 
   patch<T = any>(
-    url: string,
+    url = '',
     data: unknown = undefined,
     requestConfig: AxiosRequestConfig = {},
     options: ApiMethodParamsOptions = {},
@@ -292,7 +289,7 @@ export default class AxiosWrapper {
   }
 
   delete<T = any>(
-    url: string,
+    url = '',
     data: unknown = undefined,
     requestConfig: AxiosRequestConfig = {},
     options: ApiMethodParamsOptions = {},
@@ -307,7 +304,7 @@ export default class AxiosWrapper {
   }
 
   head<T = any>(
-    url: string,
+    url = '',
     requestConfig: AxiosRequestConfig = {},
     options: ApiMethodParamsOptions = {},
   ) {

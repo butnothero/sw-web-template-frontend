@@ -11,6 +11,6 @@ export default defineMiddleware('hello', async ({ next, redirect }) => {
   // redirect('/login');
   // next();
   // return false;
-  console.log('hello middleware');
+  console.log('👋 hello middleware');
   return true;
 });

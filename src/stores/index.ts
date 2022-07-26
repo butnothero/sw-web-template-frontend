@@ -1,4 +1,3 @@
-export * from './popup/download/app';
 export * from './currentAuthUser';
 
 import { store } from 'quasar/wrappers';

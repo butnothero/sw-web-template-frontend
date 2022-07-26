@@ -4,16 +4,22 @@ export default defineConfig({
   preflight: false,
   // https://windicss.org/posts/v30.html#attributify-mode
   attributify: {
-    prefix: 's',
+    prefix: 'w',
   },
   darkMode: false,
   purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
     extend: {
-      //     screens: {
-      //       'allow-hover': '100px',
-      //     },
+      screens: {
+        'w-hover': '100px',
+      },
       colors: {
+        body: 'var(--color-body)',
+        accent: '#5D2ED5',
+        primary: '#062A38',
+        danger: 'red',
+        warning: 'yellow',
+        success: 'green',
         gray: {
           900: '#1B1B1B',
           600: '#333333',
@@ -31,69 +37,74 @@ export default defineConfig({
       //       gilroy: 'Gilroy, Arial, sans-serif',
       //       montserrat: 'Montserrat, Arial, sans-serif',
       //     },
-      textColor: {
-        danger: 'red',
-        warning: 'yellow',
-        success: 'green',
-        primary: '#fff',
-        'primary--hover': 'rgba(0,0,0,0.15)',
-        accent: '#5D2ED5',
-        'accent-light': '#7c4eef',
-        'accent--hover': '#fec006',
-      },
-      backgroundColor: {
-        danger: 'red',
-        warning: 'yellow',
-        success: 'green',
-        primary: '#062A38',
-        accent: '#5D2ED5',
-        'accent--hover': '#fec006',
-        'accent--disable': '#2c2048',
-      },
-      borderColor: {
-        // primary: 'var(--color-border-primary)',
-        // 'primary--hover': 'var(--color-border-primary--hover)',
-        // accent: 'var(--color-global-accent)',
-        // 'accent-secondary': 'var(--color-global-accent-secondary)',
-
-        danger: 'red',
-        warning: 'yellow',
-        success: 'green',
-        primary: '#062A38',
-        accent: '#5D2ED5',
-      },
+      textColor: {},
+      backgroundColor: {},
+      borderColor: {},
       borderRadius: {
         box: '10px',
       },
     },
   },
+  variants: {
+    scrollbar: ['rounded'],
+  },
   shortcuts: {
-    'box-px': 'px-16px',
-    'box-mx': 'mx-16px',
+    // Padding
+    'box-pl': 'pl-16px',
+    'box-pr': 'pr-16px',
+    'box-pt': 'pt-16px',
+    'box-pb': 'pb-16px',
+    'box-px': 'box-pl box-pr',
+    'box-py': 'box-pt box-pb',
+    'box-p': 'box-px box-py',
 
-    // 'border-header': 'border-solid border-gray-900',
-    // 'container-pl': 'pl-45px',
-    // 'container-pr': 'pr-45px',
-    // 'container-px': 'container-pl container-pr',
+    // Margin
+    'box-ml': 'ml-16px',
+    'box-mr': 'mr-16px',
+    'box-mt': 'mt-16px',
+    'box-mb': 'mb-16px',
+    'box-mx': 'box-ml box-mr',
+    'box-my': 'box-mt box-mb',
+    'box-m': 'box-mx box-my',
+
+    // Max-width
+    'box-max-w-xs': 'max-w-250px',
+    'box-max-w-s': 'max-w-350px',
+    'box-max-w-m': 'max-w-500px',
+    'box-max-w-l': 'max-w-750px',
+    'box-max-w-xl': 'max-w-900px',
+    'box-max-w-xxl': 'max-w-1200px',
+
+    // Scrollbars
+    'scrollbar-default':
+      'scrollbar-thin scrollbar-thumb-gray-500 scrollbar-thumb-rounded scrollbar-track-transparent',
+
+    // Containers
+    'container-px': 'relative box-px',
+    'container-mx': 'relative box-mx',
+
+    // Flex
     'flex-c-b': 'flex items-center justify-between',
     'flex-c-e': 'flex items-center justify-end',
     'flex-c-c': 'flex items-center justify-center',
     'flex-c': 'flex items-center',
     'flex-e': 'flex items-end',
 
-    'auth-box-mb': 'mb-15px',
-
+    // Position absolute
     'absolute-x-c': 'absolute transform -translate-x-1/2 left-1/2',
     'absolute-y-c': 'absolute transform -translate-y-1/2 top-1/2',
     'absolute-c-c': 'absolute-x-c absolute-y-c',
-    // 'input-field':
-    //   'border-1px border-black rounded-10px py-10px px-20px w-full font-montserrat text-14px',
-    // 'input-label': 'font-montserrat text-12px mb-5px text-gray-500 block',
+
+    // Icons
+    'icon-size': 'w-25px h-25px',
+
+    // Text
+    'text-break': 'overflow-hidden break-words',
+
+    // Images
     'inner-img': 'object-cover w-full h-full',
 
-    'navbar-icon': 'w-30px h-30px',
-    'navbar-icon--active': 'w-25px h-25px',
-
+    // Other
     'btn-reset': 'bg-transparent border-none cursor-pointer',
   },
 });

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { getClassMods } from '@/services';
-
 const props = defineProps({
   modelValue: {
     type: String,
@@ -38,18 +36,31 @@ const props = defineProps({
     type: Boolean,
     default: true,
   },
-  classMods: {
-    type: [String, Array as () => string[]],
+  errorText: {
+    type: String,
     default: '',
   },
 });
 
-const emit = defineEmits(['onInput', 'update:modelValue']);
+const emit = defineEmits(['update:modelValue', 'input', 'focusout', 'blur']);
 
 const _model = useVModel(props, 'modelValue');
 
 const showPassword = ref(false);
 const inputType = ref(props.type);
+
+const onInput = (e: any) => {
+  emit('input', e);
+  _model.value = e.target.value;
+};
+
+const onFocusout = (e: any) => {
+  emit('focusout', e);
+};
+
+const onBlur = (e: any) => {
+  emit('blur', e);
+};
 
 const toggleShowPassword = () => {
   if (props.type !== 'password') return;
@@ -65,8 +76,8 @@ const toggleShowPassword = () => {
 </script>
 
 <template lang="pug">
-.input-field(:class='[getClassMods("input-field", classMods), { "input-field--error": error }]')
-  label.input-field__label(v-if='label') {{ label }}
+label.input-field(:class='[{ "input-field--error": error }]')
+  .input-field__label(v-if='label') {{ label }} #[span {{ required ? '*' : '' }}]
   .input-field__input-wrap
     input.input-field__input(
       :class='[{ "input-field__input--password": type === "password" }]',
@@ -74,26 +85,33 @@ const toggleShowPassword = () => {
       onfocus='this.removeAttribute(\'readonly\')',
       :type='inputType',
       :placeholder='placeholder',
-      v-model='_model',
+      :value='_model',
       :required='required',
-      @input='emit("onInput", _model)',
-      :disabled='disabled'
+      :disabled='disabled',
+      @input='onInput',
+      @focusout='onFocusout',
+      @blur='onBlur'
     )
     template(v-if='allowPasswordViewing && type === "password"')
       .input-field__eye(v-if='!showPassword', @click='toggleShowPassword()')
-        ImageEye
+        IconEye(preset='icon')
       .input-field__eye(v-else, @click='toggleShowPassword()')
-        ImageEyeCross
+        IconEyeCross(preset='icon')
+    .input-field__error-text(v-if='errorText && error') {{ errorText }}
 </template>
 
 <style scoped lang="scss">
 .input-field {
   $_block: &;
 
-  @apply relative w-full;
+  @apply relative block;
 
   &__label {
-    @apply block text-15px mb-14px text-primary;
+    @apply block text-16px mb-14px text-black font-medium;
+
+    span {
+      @apply text-danger;
+    }
   }
 
   &__input-wrap {
@@ -101,16 +119,18 @@ const toggleShowPassword = () => {
   }
 
   &__input {
-    @apply w-full border-1px border-white px-12px py-14px outline-none bg-transparent text-primary text-16px rounded-box;
+    @apply w-full border-1px border-gray-250 px-12px py-10px outline-none bg-gray-100 text-primary rounded-box;
 
     &::placeholder {
-      @apply text-gray-300;
-
-      opacity: 1;
+      @apply text-gray-300 opacity-50;
     }
 
     &:focus {
       @apply border-sky-500;
+    }
+
+    &:disabled {
+      @apply cursor-not-allowed;
     }
 
     &--password {
@@ -118,12 +138,12 @@ const toggleShowPassword = () => {
     }
   }
 
-  &__eye {
-    @apply absolute top-1/2 right-2px cursor-pointer transform -translate-y-1/2 rounded-box p-9px hover:(bg-primary--hover);
+  &__error-text {
+    @apply text-danger text-14px mt-8px;
   }
 
-  :deep(.image) {
-    filter: $color-icon-to-white;
+  &__eye {
+    @apply absolute top-1/2 right-2px cursor-pointer transform -translate-y-1/2 rounded-box p-6px w-hover:hover:(bg-primary--hover);
   }
 
   &--error {
@@ -138,18 +158,6 @@ const toggleShowPassword = () => {
         &:focus {
           @apply border-sky-500;
         }
-      }
-    }
-  }
-
-  &--border-b-only {
-    #{$_block} {
-      &__input {
-        @apply rounded-none border-t-0 border-l-0 border-r-0;
-      }
-
-      &__label {
-        @apply mb-4px;
       }
     }
   }

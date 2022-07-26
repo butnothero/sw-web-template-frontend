@@ -11,65 +11,20 @@ html {
   box-sizing: inherit;
 }
 
+a {
+  @apply no-underline;
+}
+
+img {
+  @apply block max-w-full h-auto align-middle;
+}
+
 #app {
   position: relative;
   width: 100%;
   height: 100vh;
   font-family: $ff-roboto;
   -webkit-tap-highlight-color: rgb(0 0 0 / 0%);
-}
-
-.container {
-  position: relative;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 $container-padding-sides;
-}
-
-.post {
-  max-width: 1000px;
-  margin: 0 auto 30px;
-}
-
-.restrictText {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.threeVerticalDots {
-  $_size: 4px;
-  $_el-margin: 8px;
-
-  position: relative;
-  width: $_size;
-  height: $_size;
-  background-color: $color-global-three-vertical-dots;
-  border-radius: 100%;
-  cursor: pointer;
-
-  &::before,
-  &::after {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: inherit;
-    border-radius: inherit;
-    content: '';
-  }
-
-  &::before {
-    top: $_el-margin;
-  }
-
-  &::after {
-    top: -$_el-margin;
-  }
-}
-
-.roundedHex {
-  @include rounded-hex();
 }
 
 .hide-scroll {

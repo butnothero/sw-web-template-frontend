@@ -39,10 +39,16 @@ module.exports = {
   },
 
   rules: {
+    // TypeScript
     '@typescript-eslint/interface-name-prefix': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
 
+    // Vue
+    'vue/multi-word-component-names': 'off',
+
+    // --- DEFAULT ---
     // this rule, if on, would require explicit return type on the `render` function
     '@typescript-eslint/explicit-function-return-type': 'off',
 

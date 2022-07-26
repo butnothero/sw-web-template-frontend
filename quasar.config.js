@@ -70,7 +70,7 @@ module.exports = configure(function (/* ctx */) {
       },
 
       env: {
-        API_BASE_URL: 'http://31.184.197.251:3000',
+        API_BASE_URL: 'https://jsonplaceholder.typicode.com',
       },
 
       target: {
