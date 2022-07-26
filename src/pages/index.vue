@@ -11,6 +11,7 @@ const state = reactive({
   inputVal: '',
 });
 
+// TODO: Добавить пример с гидратацией
 const initTodo = async () => {
   const response = await apiTodo.getTodos();
   console.log('AJAX', response);
