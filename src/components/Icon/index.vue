@@ -19,7 +19,7 @@ const props = defineProps({
     default: '',
   },
   classMods: {
-    type: [String, Array],
+    type: [String, Array as () => string[]],
     default: '',
   },
 });
