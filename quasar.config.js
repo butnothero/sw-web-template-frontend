@@ -8,29 +8,38 @@
 // Configuration for your app
 // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js
 
-
 const { configure } = require('quasar/wrappers');
-
+const path = require('path');
 
 module.exports = configure(function (/* ctx */) {
   return {
-    
+    eslint: {
+      // fix: true,
+      // include = [],
+      // exclude = [],
+      // rawOptions = {},
+      warnings: false,
+      errors: false,
+    },
 
     // https://v2.quasar.dev/quasar-cli-vite/prefetch-feature
-    // preFetch: true,
+    preFetch: true,
 
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     // https://v2.quasar.dev/quasar-cli-vite/boot-files
     boot: [
-      
-      'axios',
+      'core/middlewares',
+      'core/directives',
+      'plugins/i18n',
+      'plugins/axios',
+      'plugins/swiper',
+      'plugins/windicss',
+      'plugins/nprogress',
     ],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#css
-    css: [
-      'app.scss'
-    ],
+    css: ['index.scss', 'vendors/nprogress/index.scss'],
 
     // https://github.com/quasarframework/quasar/tree/dev/extras
     extras: [
@@ -48,9 +57,25 @@ module.exports = configure(function (/* ctx */) {
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#build
     build: {
+      alias: {
+        '@': path.join(__dirname, './src'),
+        '@app': path.join(__dirname, './'),
+        '@components': path.join(__dirname, './src/components'),
+        '@layouts': path.join(__dirname, './src/layouts'),
+        '@pages': path.join(__dirname, './src/pages'),
+        '@assets': path.join(__dirname, './src/assets'),
+        '@boot': path.join(__dirname, './src/boot'),
+        '@stores': path.join(__dirname, './src/stores'),
+        '@core': path.join(__dirname, './src/core'),
+      },
+
+      env: {
+        API_BASE_URL: 'http://31.184.197.251:3000',
+      },
+
       target: {
-        browser: [ 'es2019', 'edge88', 'firefox78', 'chrome87', 'safari13.1' ],
-        node: 'node16'
+        browser: ['es2019', 'edge88', 'firefox78', 'chrome87', 'safari13.1'],
+        node: 'node16',
       },
 
       vueRouterMode: 'hash', // available values: 'hash', 'history'
@@ -72,16 +97,79 @@ module.exports = configure(function (/* ctx */) {
       // extendViteConf (viteConf) {},
       // viteVuePluginOptions: {},
 
-      
-      // vitePlugins: [
-      //   [ 'package-name', { ..options.. } ]
-      // ]
+      vitePlugins: [
+        [
+          '@intlify/vite-plugin-vue-i18n',
+          {
+            // if you want to use Vue I18n Legacy API, you need to set `compositionOnly: false`
+            // compositionOnly: false,
+
+            // you need to set i18n resource including paths !
+            include: path.resolve(__dirname, './src/plugins/i18n/translations/**'),
+          },
+        ],
+        ['vite-plugin-windicss', {}],
+        [
+          'vite-plugin-pages',
+          {
+            extensions: ['vue'],
+            exclude: ['**/components/*.vue', '**/modules/*.ts'],
+            dirs: ['./src/pages'],
+          },
+        ],
+        [
+          'vite-plugin-vue-layouts',
+          {
+            layoutsDirs: './src/layouts',
+          },
+        ],
+        [
+          'unplugin-vue-components/vite',
+          {
+            // allow auto load markdown components under `./src/components/`
+            extensions: ['vue'],
+
+            // allow auto import and register components used in markdown
+            include: [/\.vue$/, /\.vue\?vue/],
+
+            directoryAsNamespace: true,
+
+            // custom resolvers
+            resolvers: [],
+
+            dts: 'src/components.d.ts',
+
+            dirs: ['./src/components'],
+          },
+        ],
+        [
+          'unplugin-auto-import/vite',
+          {
+            imports: [
+              'vue',
+              'vue-router',
+              'pinia',
+              'vue-i18n',
+              '@vueuse/core',
+              {
+                axios: [
+                  // default imports
+                  ['default', 'axios'], // import { default as axios } from 'axios',
+                ],
+              },
+            ],
+
+            dts: 'src/auto-imports.d.ts',
+          },
+        ],
+      ],
     },
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#devServer
     devServer: {
       // https: true
-      open: true // opens browser window automatically
+      open: false, // opens browser window automatically
+      vueDevtools: true,
     },
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#framework
@@ -99,7 +187,9 @@ module.exports = configure(function (/* ctx */) {
       // directives: [],
 
       // Quasar plugins
-      plugins: []
+      plugins: ['Meta'],
+
+      cssAddon: false,
     },
 
     // animations: 'all', // --- includes all animations
@@ -121,7 +211,7 @@ module.exports = configure(function (/* ctx */) {
     // https://v2.quasar.dev/quasar-cli-vite/developing-ssr/configuring-ssr
     ssr: {
       // ssrPwaHtmlFilename: 'offline.html', // do NOT use index.html as name!
-                                          // will mess up SSR
+      // will mess up SSR
 
       // extendSSRWebserverConf (esbuildConf) {},
       // extendPackageJson (json) {},
@@ -132,11 +222,11 @@ module.exports = configure(function (/* ctx */) {
       // manualPostHydrationTrigger: true,
 
       prodPort: 3000, // The default port that the production server should use
-                      // (gets superseded if process.env.PORT is specified at runtime)
+      // (gets superseded if process.env.PORT is specified at runtime)
 
       middlewares: [
-        'render' // keep this as last one
-      ]
+        'render', // keep this as last one
+      ],
     },
 
     // https://v2.quasar.dev/quasar-cli-vite/developing-pwa/configuring-pwa
@@ -159,7 +249,7 @@ module.exports = configure(function (/* ctx */) {
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/developing-capacitor-apps/configuring-capacitor
     capacitor: {
-      hideSplashscreen: true
+      hideSplashscreen: true,
     },
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/developing-electron-apps/configuring-electron
@@ -173,13 +263,11 @@ module.exports = configure(function (/* ctx */) {
 
       packager: {
         // https://github.com/electron-userland/electron-packager/blob/master/docs/api.md#options
-
         // OS X / Mac App Store
         // appBundleId: '',
         // appCategoryType: '',
         // osxSign: '',
         // protocol: 'myapp://path',
-
         // Windows only
         // win32metadata: { ... }
       },
@@ -187,18 +275,16 @@ module.exports = configure(function (/* ctx */) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'frontend'
-      }
+        appId: 'frontend',
+      },
     },
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/developing-browser-extensions/configuring-bex
     bex: {
-      contentScripts: [
-        'my-content-script'
-      ],
+      contentScripts: ['my-content-script'],
 
       // extendBexScriptsConf (esbuildConf) {}
       // extendBexManifestJson (json) {}
-    }
-  }
+    },
+  };
 });

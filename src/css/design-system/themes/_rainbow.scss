@@ -1,0 +1,107 @@
+:root.rainbow-theme {
+  --color-nav-icon-home: invert(85%) sepia(100%) saturate(0%) hue-rotate(132deg) brightness(107%) contrast(101%);
+  --color-nav-icon-home--active: invert(39%) sepia(22%) saturate(2768%) hue-rotate(267deg) brightness(95%) contrast(90%);
+  --color-nav-icon-announce: invert(85%) sepia(100%) saturate(0%) hue-rotate(132deg) brightness(107%) contrast(101%);
+  --color-nav-icon-announce--active: invert(75%) sepia(30%) saturate(912%) hue-rotate(27deg) brightness(100%) contrast(93%);
+  --color-nav-icon-messenger: invert(85%) sepia(100%) saturate(0%) hue-rotate(132deg) brightness(107%) contrast(101%);
+  --color-nav-icon-messenger--active: invert(73%) sepia(13%) saturate(2099%) hue-rotate(84deg) brightness(96%) contrast(93%);
+  --color-nav-icon-profile: invert(85%) sepia(100%) saturate(0%) hue-rotate(132deg) brightness(107%) contrast(101%);
+  --color-nav-icon-profile--active: invert(50%) sepia(94%) saturate(453%) hue-rotate(173deg) brightness(92%) contrast(93%);
+  --color-nav-icon-top: invert(85%) sepia(100%) saturate(0%) hue-rotate(132deg) brightness(107%) contrast(101%);
+  --color-nav-icon-top--active: invert(40%) sepia(44%) saturate(5012%) hue-rotate(340deg) brightness(106%) contrast(98%);
+
+  --body: linear-gradient(0deg, rgba(139, 75, 221, 0.4), rgba(139, 75, 221, 0.4)),
+    linear-gradient(
+      186.55deg,
+      #0082f0 27.75%,
+      #00d141 36.55%,
+      #c2f108 52.65%,
+      #da0001 65.89%,
+      #d002cb 74.85%,
+      #ce02ef 76.45%,
+      #7d03f7 84.41%
+    );
+  --global-three-vertical-dots: #fff;
+  --icon-svg: invert(0%) sepia(8%) saturate(7467%) hue-rotate(225deg) brightness(112%) contrast(94%);
+  --text: #fff;
+  --back-btn: #fff;
+  --header-line: #1440b1;
+  --botom-panel: #5d2ed5;
+  --nav-home: #fff;
+  --nav-home-active: #c548b3;
+  --nav-qr: #fff;
+  --nav-qr-active: #c548b3;
+  --nav-msg: #fff;
+  --nav-msg-active: #c548b3;
+  --nav-profile: #fff;
+  --nav-profile-active: #c548b3;
+  --post-header-username: #fff;
+  --post-header-place: #fff;
+  --post-header-time: #fff;
+  --post-header-utils-dots: #fff;
+  --post-note-text: #fff;
+  --post-join-bg: #000;
+  --post-footer-icon: #fff;
+  --story-text: #fff;
+  --story-img-bg: #fff;
+  --story-img-bg--viewed: #1440b1;
+  --life-panel-text: #b6b6b6;
+  --life-panel-text--active: #fff;
+  --life-page-filter-text: #fff;
+  --life-page-filter-bg: #7498ef;
+  --search-page-title: #000;
+  --search-page-subtitle: #000;
+  --search-page-switch-link: #fff;
+  --search-page-switch-link--active: #000;
+  --search-page-input-text: #fff;
+  --search-page-input-bg: transparent;
+  --profile-page-username: #fff;
+  --profile-page-user-status: #fff;
+  --profile-page-action-edit-text: #fff;
+  --profile-page-action-edit-bg: #000;
+  --profile-page-action-my-qr-text: #1440b1;
+  --profile-page-action-my-qr-bg: #fff;
+  --profile-page-stat-title: #fff;
+  --profile-page-stat-value: #fff;
+  --profile-page-switch-text: #efefef;
+  --profile-page-switch-text--active: #000;
+  --bottom-sheet-bg: #fff;
+  --bottom-sheet-text: #000;
+  --bottom-sheet-stroke: #e3e3e3;
+  --slider-bullet: #2d2d2d;
+  --slider-bullet--active: #fff;
+  --messenger-page-username: #000;
+  --messenger-page-latest-msg: #000;
+  --messenger-page-online-status: #35d366;
+  --messenger-page-latest-entry: #000;
+  --messenger-page-unread-text: #000;
+  --messenger-page-unread-bg: #fff;
+  --event-page-header-title: #fff;
+  --event-page-people-count: #000;
+  --event-page-date: #000;
+  --event-page-date-icon: #fff;
+  --event-page-place: #000;
+  --event-page-place-icon: #fff;
+  --event-page-about-text: #000;
+  --event-page-btn-join-text: #fff;
+  --event-page-btn-join-bg: #000;
+  --event-page-btn-like-text: #dd3fbb;
+  --event-page-btn-like-bg: #fff;
+  --event-page-btn-reply-text: #fff;
+  --event-page-btn-reply-bg: #fff;
+  --event-page-peoples-title: #fff;
+  --event-page-peoples-see-all: #000;
+  --event-page-user-name: #fff;
+  --event-page-user-status: #b0b0b0;
+  --chat-page-header-bg: #386ce8;
+  --chat-page-icon: #fff;
+  --chat-page-buddy-username: #fff;
+  --chat-page-buddy-online-status: #fff;
+  --chat-page-item-text: #000;
+  --chat-page-item-bg: #fff;
+  --chat-page-item-time: #adadad;
+  --chat-page-item-text-me: #fff;
+  --chat-page-item-bg-me: #5d2ed5;
+  --chat-page-time-me: #dbdbdb;
+  --chat-page-date: #fff;
+}

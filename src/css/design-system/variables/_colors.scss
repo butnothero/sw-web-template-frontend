@@ -1,0 +1,168 @@
+$color-black: #000;
+$color-white: #fff;
+
+$color-blue-200: #708090ff;
+$color-blue-400: #3d4654;
+$color-blue-500: #353c48;
+$color-blue-600: #323844;
+$color-blue-700: #2a303a;
+
+$color-gray-200: #fafafa;
+$color-gray-300: #dedede;
+$color-gray-400: #a9a9a9ff;
+$color-gray-600: #7c7c7c;
+$color-gray-700: #646464;
+
+$color-login-page: #062a38;
+
+$color-purple: #5d2ed5;
+$color-purple--hover: #4f28b2;
+
+$color-icon-svg: var(--icon-svg);
+
+$color-body: var(--body);
+$color-text: var(--text);
+
+$color-header-line: var(--header-line);
+
+$color-bottom-panel: var(--botom-panel);
+
+// ---------- START GLOBAL
+$color-global-three-vertical-dots: var(--global-three-vertical-dots);
+// ---------- END GLOBAL
+
+// ---------- START NAV
+$color-nav-home: var(--nav-home);
+$color-nav-home-active: var(--nav-home-active);
+$color-nav-qr: var(--nav-qr);
+$color-nav-qr-active: var(--nav-qr-active);
+$color-nav-msg: var(--nav-msg);
+$color-nav-msg-active: var(--nav-msg-active);
+$color-nav-profile: var(--nav-profile);
+$color-nav-profile-active: var(--nav-profile-active);
+// ---------- END NAV
+
+$color-back-btn: var(--back-btn);
+
+// ---------- START STORIES
+$color-story-text: var(--story-text);
+$color-story-img-bg: var(--story-img-bg);
+$color-story-img-bg--viewed: var(--story-img-bg--viewed);
+// ---------- END STORIES
+
+// ---------- START POST
+$color-post-header-username: var(--post-header-username);
+$color-post-header-place: var(--post-header-place);
+$color-post-header-time: var(--post-header-time);
+$color-post-header-utils-dots: var(--post-header-utils-dots);
+
+$color-post-note-text: var(--post-note-text);
+
+$color-post-footer-icon: var(--post-footer-icon);
+
+$color-post-join-bg: var(--post-join-bg);
+// ---------- END POST
+
+// ---------- START QR LIFE
+$color-life-panel-text: var(--life-panel-text);
+$color-life-panel-text--active: var(--life-panel-text--active);
+$color-life-page-filter-text: var(--life-page-filter-text);
+$color-life-page-filter-bg: var(--life-page-filter-bg);
+// ---------- END QR LIFE
+
+// ---------- START SEARCH PAGE
+$color-search-page-title: var(--search-page-title);
+$color-search-page-subtitle: var(--search-page-subtitle);
+$color-search-page-switch-link: var(--search-page-switch-link);
+$color-search-page-switch-link--active: var(--search-page-switch-link--active);
+$color-search-page-input-text: var(--search-page-input-text);
+$color-search-page-input-bg: var(--search-page-input-bg);
+// ---------- END SEARCH PAGE
+
+// ---------- START PROFILE PAGE
+$color-profile-page-username: var(--profile-page-username);
+$color-profile-page-user-status: var(--profile-page-user-status);
+$color-profile-page-action-edit-text: var(--profile-page-action-edit-text);
+$color-profile-page-action-edit-bg: var(--profile-page-action-edit-bg);
+$color-profile-page-action-my-qr-text: var(--profile-page-action-my-qr-text);
+$color-profile-page-action-my-qr-bg: var(--profile-page-action-my-qr-bg);
+$color-profile-page-stat-title: var(--profile-page-stat-title);
+$color-profile-page-stat-value: var(--profile-page-stat-value);
+
+$color-profile-page-switch-text: var(--profile-page-switch-text);
+$color-profile-page-switch-text--active: var(--profile-page-switch-text--active);
+// ---------- END PROFILE PAGE
+
+// ---------- START BOTTOM SHEET
+$color-bottom-sheet-bg: var(--bottom-sheet-bg);
+$color-bottom-sheet-text: var(--bottom-sheet-text);
+$color-bottom-sheet-stroke: var(--bottom-sheet-stroke);
+// ---------- END BOTTOM SHEET
+
+// ---------- START SLIDER
+$color-slider-bullet: var(--slider-bullet);
+$color-slider-bullet--active: var(--slider-bullet--active);
+// ---------- END SLIDER
+
+// ---------- START MESSENGER PAGE
+$color-messenger-page-username: var(--messenger-page-username);
+$color-messenger-page-latest-msg: var(--messenger-page-latest-msg);
+$color-messenger-page-online-status: var(--messenger-page-online-status);
+$color-messenger-page-latest-entry: var(--messenger-page-latest-entry);
+$color-messenger-page-unread-text: var(--messenger-page-unread-text);
+$color-messenger-page-unread-bg: var(--messenger-page-unread-bg);
+// ---------- END MESSENGER PAGE
+
+// ---------- START EVENT PAGE
+$color-event-page-header-title: var(--event-page-header-title);
+$color-event-page-people-count: var(--event-page-people-count);
+$color-event-page-date: var(--event-page-date);
+$color-event-page-date-icon: var(--event-page-date-icon);
+$color-event-page-place: var(--event-page-place);
+$color-event-page-place-icon: var(--event-page-place-icon);
+$color-event-page-about-text: var(--event-page-about-text);
+$color-event-page-btn-join-text: var(--event-page-btn-join-text);
+$color-event-page-btn-join-bg: var(--event-page-btn-join-bg);
+$color-event-page-btn-like-text: var(--event-page-btn-like-text);
+$color-event-page-btn-like-bg: var(--event-page-btn-like-bg);
+$color-event-page-btn-reply-text: var(--event-page-btn-reply-text);
+$color-event-page-btn-reply-bg: var(--event-page-btn-reply-bg);
+$color-event-page-peoples-title: var(--event-page-peoples-title);
+$color-event-page-peoples-see-all: var(--event-page-peoples-see-all);
+$color-event-page-user-name: var(--event-page-user-name);
+$color-event-page-user-status: var(--event-page-user-status);
+// ---------- END EVENT PAGE
+
+// ---------- START CHAT PAGE
+$color-chat-page-header-bg: var(--chat-page-header-bg);
+$color-chat-page-icon: var(--chat-page-icon);
+$color-chat-page-buddy-username: var(--chat-page-buddy-username);
+$color-chat-page-buddy-online-status: var(--chat-page-buddy-online-status);
+$color-chat-page-item-text: var(--chat-page-item-text);
+$color-chat-page-item-bg: var(--chat-page-item-bg);
+$color-chat-page-item-time: var(--chat-page-item-time);
+$color-chat-page-item-text-me: var(--chat-page-item-text-me);
+$color-chat-page-item-bg-me: var(--chat-page-item-bg-me);
+$color-chat-page-time-me: var(--chat-page-time-me);
+$color-chat-page-date: var(--chat-page-date);
+// ---------- END CHAT PAGE
+
+$color-icon-to-white: invert(99%) sepia(97%) saturate(20%) hue-rotate(237deg) brightness(103%)
+  contrast(100%);
+$color-icon-to-red: invert(16%) sepia(87%) saturate(5375%) hue-rotate(354deg) brightness(111%)
+  contrast(111%);
+$color-icon-to-green: invert(79%) sepia(73%) saturate(450%) hue-rotate(71deg) brightness(96%)
+  contrast(95%);
+$color-icon-to-purple: invert(54%) sepia(54%) saturate(6224%) hue-rotate(286deg) brightness(88%)
+  contrast(96%);
+
+$color-nav-icon-home: var(--color-nav-icon-home);
+$color-nav-icon-home--active: var(--color-nav-icon-home--active);
+$color-nav-icon-announce: var(--color-nav-icon-announce);
+$color-nav-icon-announce--active: var(--color-nav-icon-announce--active);
+$color-nav-icon-messenger: var(--color-nav-icon-messenger);
+$color-nav-icon-messenger--active: var(--color-nav-icon-messenger--active);
+$color-nav-icon-profile: var(--color-nav-icon-profile);
+$color-nav-icon-profile--active: var(--color-nav-icon-profile--active);
+$color-nav-icon-top: var(--color-nav-icon-top);
+$color-nav-icon-top--active: var(--color-nav-icon-top--active);

@@ -1,0 +1,11 @@
+/* Обрезать текст, если он не вмещается в контейнер
+   $lines - Кол-во строк
+ */
+@mixin text-restrict($lines: 1) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  overflow-wrap: break-word;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+}
