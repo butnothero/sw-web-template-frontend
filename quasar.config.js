@@ -94,7 +94,35 @@ module.exports = configure(function (/* ctx */) {
       // polyfillModulePreload: true,
       // distDir
 
-      // extendViteConf (viteConf) {},
+      extendViteConf(viteConf) {
+        viteConf.css = {
+          preprocessorOptions: {
+            css: {
+              charset: false,
+            },
+            sass: {
+              charset: false,
+            },
+            scss: {
+              charset: false,
+            },
+          },
+          postcss: {
+            plugins: [
+              {
+                postcssPlugin: 'internal:charset-removal',
+                AtRule: {
+                  charset: (atRule) => {
+                    if (atRule.name === 'charset') {
+                      atRule.remove();
+                    }
+                  },
+                },
+              },
+            ],
+          },
+        };
+      },
       // viteVuePluginOptions: {},
 
       vitePlugins: [
