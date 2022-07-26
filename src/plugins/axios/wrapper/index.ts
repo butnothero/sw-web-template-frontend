@@ -196,7 +196,16 @@ export default class AxiosWrapper {
         });
       }
 
-      return { ...response.data, httpStatus: response.status };
+      let responseData: any;
+      if (typeof response.data === 'string') {
+        responseData = {
+          message: response.data,
+        };
+      } else {
+        responseData = response.data;
+      }
+
+      return { ...responseData, httpStatus: response.status };
     } catch (thrown: any) {
       if (axios.isCancel(thrown)) {
         throw { isCancelled: true, error: thrown };
