@@ -1,31 +1,25 @@
 <script lang="ts">
 export default defineComponent({
-  name: 'default',
+  name: 'cache',
 });
 </script>
 
 <script setup lang="ts">
 onMounted(() => {
-  console.warn('Default layout');
+  console.warn('Cache layout');
 });
 </script>
 
 <template lang="pug">
 .layout.default-layout
-  h1.default-layout__title Default layout
   main.default-layout__main
-    router-view(v-slot='{ Component }')
-      transition(name='fade', mode='out-in')
-        component(:is='Component')
+    router-view(v-slot='{ Component, route }')
+      transition(:name='route.meta.transition || "fade"', mode='out-in')
+        keep-alive
+          component(:is='Component', :key='route.fullPath')
 </template>
 
 <style scoped lang="scss">
-.default-layout {
-  &__title {
-    @apply ml-10px text-26px text-blue-400;
-  }
-}
-
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.1s ease;

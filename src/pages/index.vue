@@ -9,6 +9,7 @@ useMeta({
 
 const state = reactive({
   inputVal: '',
+  counter: 0,
 });
 
 // TODO: Добавить пример с гидратацией
@@ -25,6 +26,7 @@ onMounted(async () => {
 <template lang="pug">
 section.home
   .box-px.home__container
+    Button(@click='++state.counter', :text='`count: ${state.counter}`')
     Input.mb-10px(v-model='state.inputVal', placeholder='Введите что-нибудь')
     Image(src='https://a.d-cd.net/8EAAAgKlBeA-960.jpg', alt='Toyota Supra')
     p.home__text Привет :)
@@ -41,4 +43,6 @@ section.home
 
 <route lang="yaml">
 name: home
+meta:
+  layout: cache
 </route>
