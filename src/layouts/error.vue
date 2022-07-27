@@ -1,6 +1,12 @@
+<script lang="ts">
+export default defineComponent({
+  name: 'errorLayout',
+});
+</script>
+
 <script setup lang="ts">
 onMounted(() => {
-  console.warn('error layout');
+  console.warn('Error layout');
 });
 </script>
 
@@ -8,8 +14,7 @@ onMounted(() => {
 .layout.error-layout
   h1.error-layout__title Error layout
   main.error-layout__main
-    router-view(v-slot='{ Component }')
-      component(:is='Component')
+    router-view
 </template>
 
 <style scoped lang="scss">
