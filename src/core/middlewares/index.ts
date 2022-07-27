@@ -7,12 +7,17 @@ interface RouterGuard {
   next: NavigationGuardNext;
 }
 
+interface CustomOptions {
+  isClient: boolean;
+  isServer: boolean;
+}
+
 interface CustomProperties {
   [key: string]: any;
 }
 
 interface MiddlewareHandler {
-  (params: BootFileParams<any> & RouterGuard, properties: CustomProperties):
+  (params: BootFileParams<any> & RouterGuard & CustomOptions, properties: CustomProperties):
     | boolean
     | Promise<boolean>;
 }
@@ -24,6 +29,13 @@ export interface Middleware {
 
 type HandlerParameters = RouterGuard;
 type MiddlewareRecord = (string | Middleware)[];
+
+const getBool = (value: unknown): boolean => {
+  if (typeof value === 'boolean') return value;
+  if (value === 'true') return true;
+  if (value === 'false') return false;
+  return false;
+};
 
 /**
  *
@@ -44,6 +56,7 @@ export function defineMiddleware(name: string, fn: MiddlewareHandler): Middlewar
 
 /**
  * @description Создание глобального обработчика для обработки созданных middlewares
+ * @param context Контекст Quasar
  * @param middlewares Список всех middlewares
  * @param properties Свойства, которые могут быть доступны в middlewares
  * @returns Асинхронная функция, которая возвращает Promise<boolean>, если значение true это означает, что `next()` обрабатывается middlewares, если false, это означает, что `next()` не обрабатывается middlewares
@@ -57,6 +70,8 @@ function createMiddlewareHandler(
     const allContext = {
       ...context,
       ...routerContext,
+      isClient: getBool(process.env.CLIENT),
+      isServer: getBool(process.env.SERVER),
     };
 
     const routeMiddlewares = routerContext.to.meta.middlewares as MiddlewareRecord;
