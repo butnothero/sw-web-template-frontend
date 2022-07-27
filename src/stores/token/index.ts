@@ -12,7 +12,7 @@ export const useTokenStore = defineStore('token', () => {
   };
 
   const actions = {
-    setAccessToken(accessToken: string) {
+    setAccessToken(accessToken = '') {
       state.accessToken = accessToken;
     },
 

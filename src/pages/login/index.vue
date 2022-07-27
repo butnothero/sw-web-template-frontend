@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useMeta } from 'quasar';
 import { Page } from '@/enums';
+import { useTokenStore } from '@/stores';
 
 useMeta({
   title: 'Авторизация',
@@ -8,10 +9,13 @@ useMeta({
 
 const route = useRoute();
 
+const tokenStore = useTokenStore();
+
 const checkForce = async () => {
   if (route.query.force !== 'null' && route.query.force !== null) {
     // Выход пользователя из системы
     // await apiAuth.logout();
+    tokenStore.setAccessToken();
   }
 };
 
