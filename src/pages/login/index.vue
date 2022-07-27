@@ -5,6 +5,19 @@ import { Page } from '@/enums';
 useMeta({
   title: 'Авторизация',
 });
+
+const route = useRoute();
+
+const checkForce = async () => {
+  if (route.query.force !== 'null' && route.query.force !== null) {
+    // Выход пользователя из системы
+    // await apiAuth.logout();
+  }
+};
+
+onBeforeMount(async () => {
+  await checkForce();
+});
 </script>
 
 <template lang="pug">
