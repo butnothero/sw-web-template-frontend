@@ -1,4 +1,5 @@
 export * from './currentAuthUser';
+export * from './token';
 
 import { store } from 'quasar/wrappers';
 
