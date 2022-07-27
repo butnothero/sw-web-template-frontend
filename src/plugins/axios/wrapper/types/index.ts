@@ -1,5 +1,9 @@
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
 
+interface LocalhostRequest {
+  enable?: boolean;
+}
+
 export interface CollectorOptions {
   collectRequests?: number;
   collectErrors?: number;
@@ -9,6 +13,7 @@ export interface AxiosWrapperOptions {
   config?: AxiosRequestConfig;
   apiEndpoint?: string;
   collector?: CollectorOptions;
+  localhost?: LocalhostRequest;
 }
 
 export interface CollectedRequestInfo {

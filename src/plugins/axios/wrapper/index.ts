@@ -32,7 +32,13 @@ export default class AxiosWrapper {
     options: AxiosWrapperOptions = {},
     interceptors: Interceptors | undefined = undefined,
   ) {
-    const { config = {}, apiEndpoint = '', collector = {} } = options;
+    const { config = {}, apiEndpoint = '', collector = {}, localhost = {} } = options;
+
+    if (localhost.enable && config?.baseURL) {
+      config.baseURL = process.env.CLIENT
+        ? config.baseURL
+        : `http://localhost:${process.env.PORT}${config.baseURL}`;
+    }
 
     const axiosConfig: AxiosRequestConfig = {
       timeout: AxiosWrapper.DEFAULT_TIMEOUT,
