@@ -11,14 +11,6 @@
 const { configure } = require('quasar/wrappers');
 const path = require('path');
 
-function getPort(mode, isProd) {
-  if (isProd) return 8765;
-
-  if (mode.ssr) return 9100;
-
-  return undefined;
-}
-
 module.exports = configure(function ({ mode, dev, prod }) {
   return {
     eslint: {
@@ -79,7 +71,6 @@ module.exports = configure(function ({ mode, dev, prod }) {
 
       env: {
         API_BASE_URL: 'https://jsonplaceholder.typicode.com',
-        PORT: getPort(mode, prod),
       },
 
       target: {
@@ -257,7 +248,7 @@ module.exports = configure(function ({ mode, dev, prod }) {
       // manualStoreHydration: true,
       // manualPostHydrationTrigger: true,
 
-      prodPort: getPort(mode, prod), // The default port that the production server should use
+      prodPort: 8765, // The default port that the production server should use
       // (gets superseded if process.env.PORT is specified at runtime)
 
       middlewares: [

@@ -37,7 +37,7 @@ export default class AxiosWrapper {
     if (localhost.enable && config?.baseURL) {
       config.baseURL = process.env.CLIENT
         ? config.baseURL
-        : `http://localhost:${process.env.PORT}${config.baseURL}`;
+        : `${process.env.APP_URL}${config.baseURL}`;
     }
 
     const axiosConfig: AxiosRequestConfig = {
