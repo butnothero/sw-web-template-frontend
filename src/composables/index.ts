@@ -1,3 +1,2 @@
-import { useDevice } from '@/composables/device';
-
-export { useDevice };
+export { useDevice } from './device';
+export { useEmitter } from './emitter';

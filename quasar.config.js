@@ -36,6 +36,7 @@ module.exports = configure(function ({ mode, dev, prod }) {
       'plugins/swiper',
       'plugins/windicss',
       'plugins/nprogress',
+      'plugins/mitt',
     ],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#css
