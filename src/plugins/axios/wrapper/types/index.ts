@@ -62,3 +62,8 @@ export interface ApiMethodParams {
   requestConfig?: AxiosRequestConfig;
   options?: ApiMethodParamsOptions;
 }
+
+export interface _Response<T> {
+  data: T;
+  httpStatus: number;
+}

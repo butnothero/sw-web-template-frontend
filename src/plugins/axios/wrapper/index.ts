@@ -8,7 +8,7 @@ import type {
   RequestInfoToCollect,
   Interceptors,
 } from '@/plugins/axios/wrapper/types';
-import { ApiMethodParamsOptions } from '@/plugins/axios/wrapper/types';
+import { _Response, ApiMethodParamsOptions } from '@/plugins/axios/wrapper/types';
 
 export type { ApiMethodParams, AxiosWrapperOptions } from '@/plugins/axios/wrapper/types';
 
@@ -162,7 +162,7 @@ export default class AxiosWrapper {
     };
   }
 
-  async request<T = any>(methodParams: ApiMethodParams): Promise<T> {
+  async request<T = any>(methodParams: ApiMethodParams): Promise<_Response<T>> {
     const {
       method,
       url,
@@ -211,7 +211,7 @@ export default class AxiosWrapper {
         responseData = response.data;
       }
 
-      return { ...responseData, httpStatus: response.status };
+      return { data: responseData, httpStatus: response.status };
     } catch (thrown: any) {
       if (axios.isCancel(thrown)) {
         throw { isCancelled: true, error: thrown };
@@ -235,7 +235,7 @@ export default class AxiosWrapper {
         () => this.request({ ...methodParams, retries: retries + 1 }),
         retries,
         new Error(thrown instanceof Error ? thrown.message : 'Unknown error'),
-      ) as Promise<T>;
+      ) as Promise<_Response<T>>;
     }
   }
 
