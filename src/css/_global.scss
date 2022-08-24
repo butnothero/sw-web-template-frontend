@@ -1,32 +1,42 @@
-@import 'design-system';
+@import 'variables';
+@import 'components/swiper';
 
-html {
-  box-sizing: border-box;
-  height: 100%;
-}
+//@include swiper-root();
+//@include swiper-navigation();
+//@include swiper-pagination();
+//@include swiper-lazy();
+//@include swiper-virtual();
 
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
-a {
-  @apply no-underline;
-}
-
-img {
-  @apply block max-w-full h-auto align-middle;
+body {
+  @include scrollbar();
 }
 
 #q-app {
-  position: relative;
-  width: 100%;
-  height: 100vh;
+  @apply relative w-full h-screen;
   font-family: $ff-roboto;
   -webkit-tap-highlight-color: rgb(0 0 0 / 0%);
 }
 
 .hide-scroll {
-  overflow: hidden;
+  @apply overflow-hidden;
+}
+
+.g-app {
+  @apply h-full;
+}
+
+.g-hex {
+  @include rounded-hex();
+}
+
+.g-text-restrict {
+  @include text-restrict();
+}
+
+.g-layout {
+  min-height: unset !important;
+
+  .q-page {
+    min-height: unset !important;
+  }
 }

@@ -1,19 +1,30 @@
 <script lang="ts">
 export default defineComponent({
-  name: 'cacheLayout',
+  name: 'CacheLayout',
 });
 </script>
 
 <script setup lang="ts">
-onMounted(() => {
-  console.log('Cache layout');
+import { getRouteKey } from '@/services';
+
+const props = defineProps({
+  pageKey: {
+    type: String,
+    default: '',
+    required: true,
+  },
 });
 </script>
 
 <template lang="pug">
-.layout.default-layout
-  main.default-layout__main
+q-layout.g-layout.layout-cache
+  .layout-cache__view
     router-view(v-slot='{ Component, route }')
       keep-alive
-        component(:is='Component', :key='route.fullPath')
+        component(v-if='getRouteKey($route) === pageKey', :is='Component', :key='pageKey')
 </template>
+
+<style scoped lang="scss">
+.layout-cache {
+}
+</style>

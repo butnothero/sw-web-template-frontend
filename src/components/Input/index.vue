@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { getClassMods, getIconClassMods } from '@/services';
+
 const props = defineProps({
   modelValue: {
     type: String,
@@ -40,18 +42,52 @@ const props = defineProps({
     type: String,
     default: '',
   },
+  classMods: {
+    type: [String, Array as () => string[]],
+    default: '',
+  },
+  py: {
+    type: String,
+    default: '8px',
+  },
+  timeout: {
+    type: Number,
+    default: -1,
+  },
 });
 
-const emit = defineEmits(['update:modelValue', 'input', 'focusout', 'blur']);
+const emit = defineEmits(['update:modelValue', 'input', 'focusout', 'blur', 'focus', 'timeout']);
 
 const _model = useVModel(props, 'modelValue');
 
+const timer = ref();
 const showPassword = ref(false);
 const inputType = ref(props.type);
 
+const emitTimeout = (e: Event) => {
+  emit('timeout', e);
+};
+
+const createTimer = () => {
+  if (props.timeout <= 0) return;
+
+  timer.value = setTimeout(emitTimeout, props.timeout);
+};
+
+const clearTimer = () => {
+  clearTimeout(timer.value);
+  timer.value = undefined;
+};
+
 const onInput = (e: any) => {
-  emit('input', e);
+  if (timer.value) {
+    clearTimer();
+  }
+
+  createTimer();
+
   _model.value = e.target.value;
+  emit('input', e);
 };
 
 const onFocusout = (e: any) => {
@@ -60,6 +96,10 @@ const onFocusout = (e: any) => {
 
 const onBlur = (e: any) => {
   emit('blur', e);
+};
+
+const onFocus = (e: Event) => {
+  emit('focus', e);
 };
 
 const toggleShowPassword = () => {
@@ -76,7 +116,9 @@ const toggleShowPassword = () => {
 </script>
 
 <template lang="pug">
-label.input-field(:class='[{ "input-field--error": error }]')
+label.input-field(
+  :class='[getClassMods("input-field", classMods), { "input-field--error": error }]'
+)
   .input-field__label(v-if='label') {{ label }} #[span {{ required ? '*' : '' }}]
   .input-field__input-wrap
     input.input-field__input(
@@ -90,13 +132,14 @@ label.input-field(:class='[{ "input-field--error": error }]')
       :disabled='disabled',
       @input='onInput',
       @focusout='onFocusout',
-      @blur='onBlur'
+      @blur='onBlur',
+      @focus='onFocus'
     )
     template(v-if='allowPasswordViewing && type === "password"')
       .input-field__eye(v-if='!showPassword', @click='toggleShowPassword()')
-        IconEye(preset='icon')
+        IconEye(:class-mods='getIconClassMods(classMods)')
       .input-field__eye(v-else, @click='toggleShowPassword()')
-        IconEyeCross(preset='icon')
+        IconEyeCross(:class-mods='getIconClassMods(classMods)')
     .input-field__error-text(v-if='errorText && error') {{ errorText }}
 </template>
 
@@ -107,7 +150,7 @@ label.input-field(:class='[{ "input-field--error": error }]')
   @apply relative block;
 
   &__label {
-    @apply block text-16px mb-14px text-black font-medium;
+    @apply block text-15px mb-14px text-primary;
 
     span {
       @apply text-danger;
@@ -119,10 +162,13 @@ label.input-field(:class='[{ "input-field--error": error }]')
   }
 
   &__input {
-    @apply w-full border-1px border-gray-250 px-12px py-10px outline-none bg-gray-100 text-primary rounded-box;
+    @apply w-full border-1px border-white border-solid px-12px outline-none bg-transparent text-primary text-16px rounded-box;
+
+    padding-top: v-bind('py');
+    padding-bottom: v-bind('py');
 
     &::placeholder {
-      @apply text-gray-300 opacity-50;
+      @apply text-gray-300 opacity-100;
     }
 
     &:focus {
@@ -158,6 +204,14 @@ label.input-field(:class='[{ "input-field--error": error }]')
         &:focus {
           @apply border-sky-500;
         }
+      }
+    }
+  }
+
+  &--input-text-white {
+    #{$_block} {
+      &__input {
+        @apply text-white;
       }
     }
   }

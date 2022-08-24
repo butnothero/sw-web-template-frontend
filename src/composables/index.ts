@@ -1,2 +1,4 @@
-export { useDevice } from './device';
-export { useEmitter } from './emitter';
+export * from './device';
+export * from './emitter';
+export * from './theme';
+export * from './disableSroll';

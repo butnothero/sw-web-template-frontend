@@ -1,0 +1,69 @@
+@mixin animate-nav-icon() {
+  @keyframes animate-nav-icon {
+    0%,
+    100% {
+      filter: invert(51%) sepia(47%) saturate(773%) hue-rotate(170deg) brightness(93%) contrast(82%);
+    }
+
+    30% {
+      filter: invert(26%) sepia(64%) saturate(952%) hue-rotate(295deg) brightness(99%)
+        contrast(108%);
+    }
+
+    70% {
+      filter: invert(80%) sepia(41%) saturate(526%) hue-rotate(31deg) brightness(95%) contrast(87%);
+    }
+
+    //70% {
+    //  filter: invert(50%) sepia(84%) saturate(2729%) hue-rotate(346deg) brightness(100%) contrast(102%);
+    //}
+  }
+
+  animation: 3s linear 0s infinite reverse both animate-nav-icon;
+}
+
+$_animation-bg: infinite ease-in-out 1.3s bg-loader;
+
+@mixin bg-loader-primary($width: 100%, $height: 25px, $rounded: true) {
+  @keyframes bg-loader {
+    0%,
+    100% {
+      @apply bg-gray-100;
+    }
+    50% {
+      @apply bg-gray-200;
+    }
+  }
+
+  @apply bg-gray-100;
+
+  @if ($rounded) {
+    @apply rounded-6px;
+  }
+
+  width: $width;
+  height: $height;
+  animation: $_animation-bg;
+}
+
+@mixin bg-loader-primary-darken($width: 100%, $height: 25px, $rounded: true) {
+  @keyframes bg-loader {
+    0%,
+    100% {
+      @apply bg-gray-200;
+    }
+    50% {
+      @apply bg-gray-100;
+    }
+  }
+
+  @apply bg-gray-200;
+
+  @if ($rounded) {
+    @apply rounded-6px;
+  }
+
+  width: $width;
+  height: $height;
+  animation: $_animation-bg;
+}

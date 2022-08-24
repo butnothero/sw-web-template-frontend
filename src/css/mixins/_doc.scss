@@ -1,0 +1,17 @@
+@mixin doc() {
+  @apply text-break;
+
+  h1 {
+    @apply text-26px pb-20px font-700;
+  }
+
+  h2 {
+    @apply text-20px py-20px font-700;
+  }
+
+  h3 {
+    @apply text-16px py-20px font-700;
+  }
+
+  @apply pt-20px pb-50px text-primary leading-[160%];
+}

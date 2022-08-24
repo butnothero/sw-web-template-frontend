@@ -9,6 +9,6 @@ button.btn-dots-y
 
 <style scoped lang="scss">
 .btn-dots-y {
-  @apply btn-reset flex-c-c px-10px py-4px;
+  @apply flex-c-c px-10px py-4px;
 }
 </style>

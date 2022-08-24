@@ -4,6 +4,7 @@ import {
   createRouter,
   createWebHashHistory,
   createWebHistory,
+  RouterScrollBehavior,
 } from 'vue-router';
 
 // @ts-ignore
@@ -28,13 +29,30 @@ export default route((/* { store, ssrContext } */) => {
     : createWebHashHistory;
 
   const Router = createRouter({
-    scrollBehavior: () => ({ left: 0, top: 0 }),
+    scrollBehavior: (to, from, savedPosition) => {
+      if (to.name === from.name) {
+        to.meta?.scrollPos && (to.meta.scrollPos.top = 0);
+        return { left: 0, top: 0 };
+      }
+      const scrollpos = savedPosition || to.meta?.scrollPos || { left: 0, top: 0 };
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(scrollpos);
+        }, 0);
+      });
+    },
+    // routes: generatedRoutes,
     routes: setupLayouts(generatedRoutes),
 
     // Leave this as is and make changes in quasar.conf.js instead!
     // quasar.conf.js -> build -> vueRouterMode
     // quasar.conf.js -> build -> publicPath
     history: createHistory(process.env.VUE_ROUTER_BASE),
+  });
+
+  Router.beforeEach((to, from, next) => {
+    from.meta?.scrollPos && (from.meta.scrollPos.top = window.scrollY);
+    return next();
   });
 
   return Router;

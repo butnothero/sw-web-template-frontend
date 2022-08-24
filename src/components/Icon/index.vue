@@ -7,12 +7,10 @@ const props = defineProps({
   src: {
     type: String,
     default: '',
-    required: true,
   },
   alt: {
     type: String,
     default: 'icon',
-    required: true,
   },
   size: {
     type: String,
@@ -37,12 +35,42 @@ img.icon(
 
 <style scoped lang="scss">
 .icon {
+  filter: $color-icon-primary;
+
+  &--primary-2 {
+    filter: $color-icon-primary-2;
+  }
+
   &--white {
-    filter: $color-icon-to-white;
+    filter: $color-icon-white;
+  }
+
+  &--black {
+    filter: $color-icon-black;
   }
 
   &--purple {
-    filter: $color-icon-to-purple;
+    filter: $color-icon-purple;
+  }
+
+  &--red {
+    filter: $color-icon-red;
+  }
+
+  &--green {
+    filter: $color-icon-green;
+  }
+
+  &--pink {
+    filter: $color-icon-pink;
+  }
+
+  &--light-blue {
+    filter: $color-icon-light-blue;
+  }
+
+  &--bottom-sheet {
+    filter: $color-icon-bottom-sheet;
   }
 }
 </style>

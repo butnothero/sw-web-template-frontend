@@ -1,38 +1,37 @@
 import { RenderError } from '@quasar/app-vite';
 import { ssrMiddleware } from 'quasar/wrappers';
-import configure from 'backend'
+import configure from 'backend';
 
 export default ssrMiddleware(async ({ app, render, serve }) => {
-  console.log('--- Init NestJS ---')
+  console.log('--- Init NestJS ---');
   const nest = await configure({
     app,
     prefix: 'api',
-    // @ts-ignore
-    async render ({ req, res }) {
-      res.setHeader('Content-Type', 'text/html')
+    async render({ req, res }) {
+      res.setHeader('Content-Type', 'text/html');
 
       try {
-        const html = await render({ req, res })
-        res.send(html)
+        const html = await render({ req, res });
+        res.send(html);
       } catch (error) {
-        const err = error as RenderError
+        const err = error as RenderError;
         if (err.url) {
           if (err.code) {
-            res.redirect(err.code, err.url)
+            res.redirect(err.code, err.url);
           } else {
-            res.redirect(err.url)
+            res.redirect(err.url);
           }
         } else if (err.code === 404) {
-          res.status(404).send('404 | Page Not Found')
+          res.status(404).send('404 | Page Not Found');
         } else if (process.env.DEV) {
-          serve.error({ err, req, res })
+          serve.error({ err, req, res });
         } else {
-          res.status(500).send('500 | Internal Server Error')
+          res.status(500).send('500 | Internal Server Error');
         }
       }
-    }
+    },
   });
-  await nest.init()
+  await nest.init();
 });
 
 // This middleware should execute as last one

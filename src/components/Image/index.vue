@@ -5,36 +5,42 @@ const props = defineProps({
   src: {
     type: String,
     default: '',
-    required: true,
   },
   alt: {
     type: String,
     default: 'image',
-    required: true,
   },
   size: {
     type: String,
-    default: '',
+    default: '100%',
   },
   classMods: {
     type: [String, Array as () => string[]],
     default: '',
   },
+  loading: {
+    type: String,
+    default: 'lazy',
+  },
+  fit: {
+    type: String,
+    default: 'cover',
+  },
 });
 </script>
 
 <template lang="pug">
-q-img.image(
+img.image(
   :src='src',
   :alt='alt',
-  :style='[{ width: size }, { height: size }]',
+  :style='[{ width: size }, { height: size }, { "object-fit": fit }]',
   :class='getClassMods("image", classMods)',
-  loading='lazy'
+  :loading='loading'
 )
-  slot
 </template>
 
 <style scoped lang="scss">
 .image {
+  @apply select-none pointer-events-none;
 }
 </style>

@@ -1,6 +1,4 @@
-export const cookiesNames = {
-  app: {
-    theme: 'appTheme',
-    locale: 'appLocale',
-  },
-};
+export const enum cookiesNames {
+  APP_THEME = 'appTheme',
+  APP_LOCALE = 'appLocale'
+}

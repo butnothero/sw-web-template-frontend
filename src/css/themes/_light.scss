@@ -1,0 +1,25 @@
+:root {
+  // Text color
+  --color-text-primary: #000;
+  --color-text-secondary: #868686;
+
+  // Background color
+  --color-bg-primary: #000;
+  --color-bg-secondary: #a6a6a6;
+
+  // Icon
+  --color-icon-black: brightness(1) invert(0);
+  --color-icon-white: brightness(0) invert(1);
+  --color-icon-purple: invert(22%) sepia(45%) saturate(5190%) hue-rotate(251deg) brightness(83%)
+    contrast(103%);
+  --color-icon-pink: invert(54%) sepia(54%) saturate(6224%) hue-rotate(286deg) brightness(88%)
+    contrast(96%);
+  --color-icon-red: invert(16%) sepia(87%) saturate(5375%) hue-rotate(354deg) brightness(111%)
+    contrast(111%);
+  --color-icon-green: invert(79%) sepia(73%) saturate(450%) hue-rotate(71deg) brightness(96%)
+    contrast(95%);
+  --color-icon-light-blue: invert(49%) sepia(69%) saturate(573%) hue-rotate(169deg) brightness(87%)
+    contrast(91%);
+
+  --color-icon-primary: var(--color-icon-black);
+}

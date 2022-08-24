@@ -15,7 +15,7 @@ const props = defineProps({
 </script>
 
 <template lang="pug">
-Icon.icon-dots-y(
+Image.icon-dots-y(
   :src='icon',
   alt='action',
   :class='getClassMods("icon-dots-y", classMods)',

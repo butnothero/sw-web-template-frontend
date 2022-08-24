@@ -1,26 +1,19 @@
 <script lang="ts">
 export default defineComponent({
-  name: 'errorLayout',
+  name: 'ErrorLayout',
 });
 </script>
 
-<script setup lang="ts">
-onMounted(() => {
-  console.warn('Error layout');
-});
-</script>
+<script setup lang="ts"></script>
 
 <template lang="pug">
-.layout.error-layout
-  h1.error-layout__title Error layout
-  main.error-layout__main
-    router-view
+q-layout.g-layout.error-layout
+  .error-layout__view
+    router-view(v-slot='{ Component }')
+      component(:is='Component')
 </template>
 
 <style scoped lang="scss">
 .error-layout {
-  &__title {
-    @apply text-red-400;
-  }
 }
 </style>

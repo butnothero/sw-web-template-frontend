@@ -1,24 +1,26 @@
-<template>
-  <div class="loader">
-    <svg class="loader__circular" viewBox="25 25 50 50">
-      <circle
-        class="loader__path"
-        cx="50"
-        cy="50"
-        fill="none"
-        r="20"
-        stroke-miterlimit="10"
-        stroke-width="5"
-      />
-    </svg>
-  </div>
-</template>
+<script lang="ts" setup>
+import { getClassMods } from '@/services';
 
-<script lang="ts">
-export default defineComponent({
-  name: 'Loader',
+const props = defineProps({
+  classMods: {
+    type: [String, Array as () => string[]],
+    default: '',
+  },
 });
 </script>
+
+<template lang="pug">
+.loader(:class='getClassMods("loader", classMods)')
+  svg.loader__circular(viewBox='25 25 50 50')
+    circle.loader__path(
+      cx='50',
+      cy='50',
+      fill='none',
+      r='20',
+      stroke-miterlimit='10',
+      stroke-width='5'
+    )
+</template>
 
 <style scoped lang="scss">
 .loader {
@@ -88,6 +90,10 @@ export default defineComponent({
     90% {
       stroke: #ffa700;
     }
+  }
+
+  &--abs-c-c {
+    @apply absolute-c-c;
   }
 }
 </style>

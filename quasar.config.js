@@ -29,18 +29,22 @@ module.exports = configure(function ({ mode, dev, prod }) {
     // --> boot files are part of "main.js"
     // https://v2.quasar.dev/quasar-cli-vite/boot-files
     boot: [
+      'layouts',
       'core/middlewares',
       'core/directives',
+      'core/swiper',
       'plugins/i18n',
       'plugins/axios',
-      'plugins/swiper',
       'plugins/windicss',
       'plugins/nprogress',
       'plugins/mitt',
+      'plugins/lazysizes',
+      'plugins/piniaPlugins',
+      'plugins/vcalendar',
     ],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#css
-    css: ['index.scss', 'vendors/nprogress/index.scss'],
+    css: ['index.scss', 'vendors/nprogress/index.scss', 'themes/index.scss'],
 
     // https://github.com/quasarframework/quasar/tree/dev/extras
     extras: [
@@ -53,7 +57,7 @@ module.exports = configure(function ({ mode, dev, prod }) {
       // 'roboto-font-latin-ext', // this or either 'roboto-font', NEVER both!
 
       'roboto-font', // optional, you are not bound to it
-      'material-icons', // optional, you are not bound to it
+      // 'material-icons', // optional, you are not bound to it
     ],
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#build
@@ -71,7 +75,8 @@ module.exports = configure(function ({ mode, dev, prod }) {
       },
 
       env: {
-        API_BASE_URL: 'https://jsonplaceholder.typicode.com',
+        API_BASE_URL: '',
+        API_DEV_URL: '',
       },
 
       target: {
@@ -88,6 +93,7 @@ module.exports = configure(function ({ mode, dev, prod }) {
 
       // publicPath: '/',
       // analyze: true,
+      // env: {},
       // rawDefine: {}
       // ignorePublicFolder: true,
       // minify: false,
@@ -105,6 +111,10 @@ module.exports = configure(function ({ mode, dev, prod }) {
             },
             scss: {
               charset: false,
+              additionalData: `
+                @import "@/css/mixins/index.scss";
+                @import "@/css/variables/index.scss";
+              `,
             },
           },
           postcss: {
@@ -215,7 +225,7 @@ module.exports = configure(function ({ mode, dev, prod }) {
       // directives: [],
 
       // Quasar plugins
-      plugins: ['Meta', 'Cookies'],
+      plugins: ['Meta', 'Cookies', 'LocalStorage'],
 
       cssAddon: false,
     },
@@ -249,7 +259,7 @@ module.exports = configure(function ({ mode, dev, prod }) {
       // manualStoreHydration: true,
       // manualPostHydrationTrigger: true,
 
-      prodPort: 8765, // The default port that the production server should use
+      prodPort: 3333, // The default port that the production server should use
       // (gets superseded if process.env.PORT is specified at runtime)
 
       middlewares: [

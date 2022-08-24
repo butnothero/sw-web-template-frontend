@@ -1,5 +1,6 @@
 import { BootFileParams } from '@quasar/app-vite';
 import { NavigationGuardNext, RouteLocationNormalized } from 'vue-router';
+import { getBool } from '@/services';
 
 interface RouterGuard {
   to: RouteLocationNormalized;
@@ -29,13 +30,6 @@ export interface Middleware {
 
 type HandlerParameters = RouterGuard;
 type MiddlewareRecord = (string | Middleware)[];
-
-const getBool = (value: unknown): boolean => {
-  if (typeof value === 'boolean') return value;
-  if (value === 'true') return true;
-  if (value === 'false') return false;
-  return false;
-};
 
 /**
  *

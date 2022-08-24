@@ -1,4 +1,3 @@
-export enum Page {
+export const enum Page {
   HOME = 'home',
-  LOGIN = 'login',
 }

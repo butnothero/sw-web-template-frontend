@@ -1,0 +1,52 @@
+@import '../variables';
+
+//@mixin scroll {
+//  &::-webkit-scrollbar {
+//    width: 6px;
+//  }
+//
+//  &::-webkit-scrollbar-track {
+//    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+//  }
+//
+//  &::-webkit-scrollbar-thumb {
+//    background-color: $color-gray-400;
+//    outline: 1px solid $color-blue-200;
+//  }
+//}
+// НЕ ПОДДЕРЖИВАЕТСЯ В FireFox
+@mixin scrollbar($showTrack: true, $size: 6) {
+  &::-webkit-scrollbar {
+    // Width of vertical scroll bar
+    width: $size + px;
+
+    // Height of horizontal scroll bar
+    height: $size + px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    @apply rounded-box;
+
+    background: #777777;
+  }
+
+  &::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+}
+
+@mixin hide-scrollbar() {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    @apply hidden;
+  }
+}
+
+@mixin show-scrollbar() {
+  scrollbar-width: unset;
+
+  &::-webkit-scrollbar {
+    @apply block;
+  }
+}

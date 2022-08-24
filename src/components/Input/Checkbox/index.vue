@@ -1,41 +1,46 @@
 <script setup lang="ts">
+import { getClassMods } from '@/services';
+
 const props = defineProps({
   modelValue: {
     type: Boolean,
     default: false,
     required: true,
   },
-  label: {
+  text: {
     type: String,
+    default: '',
+  },
+  classMods: {
+    type: [String, Array as () => string[]],
     default: '',
   },
 });
 
 const emit = defineEmits(['update:modelValue']);
 
-const state = reactive({
-  value: useVModel(props, 'modelValue'),
-});
+const _model = useVModel(props, 'modelValue');
 </script>
 
 <template lang="pug">
-label.input-checkbox
-  input.input-checkbox__input(v-model='state.value', type='checkbox')
-  .input-checkbox__label(v-if='label') {{ label }}
+.input-checkbox(:class='getClassMods("input-checkbox", classMods)')
+  label.input-checkbox__label
+    input.input-checkbox__input(type='checkbox', v-model='_model')
+    .input-checkbox__text(v-if='text') {{ text }}
 </template>
 
 <style scoped lang="scss">
 .input-checkbox {
-  @apply flex-c cursor-pointer;
+  $_block: &;
 
   &__label {
-    @apply text-primary text-15px ml-8px select-none;
+    @apply flex-c;
   }
 
   &__input {
-    @apply appearance-none bg-transparent m-0 border border-primary-light rounded-4px cursor-pointer;
+    @apply appearance-none bg-transparent m-0 border-2px border-white border-solid rounded-2px;
 
-    $_size: 1.4em;
+    $_size: 1.25em;
 
     width: $_size;
     height: $_size;
@@ -43,13 +48,13 @@ label.input-checkbox
     &::before {
       @apply content-[''] origin-center;
 
-      $_size-before: 0.8em;
+      $_size-before: 0.65em;
 
       width: $_size-before;
       height: $_size-before;
-      box-shadow: inset 1em 1em var(--color-global-accent-secondary);
+      box-shadow: inset 1em 1em #f107f1;
       transform: scale(0);
-      transition: 70ms transform ease-in-out;
+      transition: 120ms transform ease-in-out;
       clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
     }
 
@@ -60,16 +65,22 @@ label.input-checkbox
         transform: scale(1);
       }
     }
+  }
 
-    &:focus {
-      outline: max(2px, 0.15em) solid var(--color-global-accent);
-      outline-offset: max(2px, 0.15em);
-    }
+  &__text {
+    @apply text-16px text-white ml-10px;
+  }
 
-    &:disabled {
-      color: gray;
-      cursor: not-allowed;
+  &--error {
+    #{$_block} {
+      &__text {
+        @apply text-danger;
+      }
     }
+  }
+
+  &--inline-block {
+    @apply inline-block;
   }
 }
 </style>
