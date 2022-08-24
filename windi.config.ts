@@ -27,7 +27,7 @@ export default defineConfig({
         },
       },
       lineHeight: {
-        primary: '19px',
+        primary: '130%',
       },
       textColor: {
         primary: 'var(--color-text-primary)',
