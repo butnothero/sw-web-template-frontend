@@ -37,10 +37,6 @@ img.icon(
 .icon {
   filter: $color-icon-primary;
 
-  &--primary-2 {
-    filter: $color-icon-primary-2;
-  }
-
   &--white {
     filter: $color-icon-white;
   }
@@ -67,10 +63,6 @@ img.icon(
 
   &--light-blue {
     filter: $color-icon-light-blue;
-  }
-
-  &--bottom-sheet {
-    filter: $color-icon-bottom-sheet;
   }
 }
 </style>
