@@ -75,8 +75,8 @@ module.exports = configure(function ({ mode, dev, prod }) {
       },
 
       env: {
-        API_BASE_URL: '',
-        API_DEV_URL: '',
+        API_BASE_URL: 'http://localhost:3456',
+        API_DEV_URL: 'http://localhost:3456',
       },
 
       target: {
@@ -259,7 +259,7 @@ module.exports = configure(function ({ mode, dev, prod }) {
       // manualStoreHydration: true,
       // manualPostHydrationTrigger: true,
 
-      prodPort: 3333, // The default port that the production server should use
+      prodPort: 3457, // The default port that the production server should use
       // (gets superseded if process.env.PORT is specified at runtime)
 
       middlewares: [

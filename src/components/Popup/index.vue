@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { toggleBodyScroll } from '@/services';
+import { toggleBodyScroll } from '@butnothero/tools';
 
 const props = defineProps({
   modelValue: {

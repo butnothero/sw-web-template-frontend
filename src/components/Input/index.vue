@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { getClassMods, getIconClassMods } from '@/services';
+import { getClassMods, getIconClassMods } from '@butnothero/tools';
 
 const props = defineProps({
   modelValue: {
-    type: String,
-    required: true,
+    type: [String, Number],
   },
   disabled: {
     type: Boolean,
@@ -48,11 +47,15 @@ const props = defineProps({
   },
   py: {
     type: String,
-    default: '8px',
+    default: '14px',
   },
   timeout: {
     type: Number,
     default: -1,
+  },
+  width: {
+    type: String,
+    default: '382px',
   },
 });
 
@@ -150,7 +153,7 @@ label.input-field(
   @apply relative block;
 
   &__label {
-    @apply block text-15px mb-14px text-primary;
+    @apply input-label;
 
     span {
       @apply text-danger;
@@ -162,8 +165,9 @@ label.input-field(
   }
 
   &__input {
-    @apply w-full border-1px border-white border-solid px-12px outline-none bg-transparent text-primary text-16px rounded-box;
+    @apply px-16px outline-none bg-input text-accent text-16px rounded-primary transition w-hover:hover:(bg-input--hover) focus:(bg-input--hover);
 
+    width: v-bind('width');
     padding-top: v-bind('py');
     padding-bottom: v-bind('py');
 
@@ -177,6 +181,12 @@ label.input-field(
 
     &:disabled {
       @apply cursor-not-allowed;
+    }
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
     }
 
     &--password {

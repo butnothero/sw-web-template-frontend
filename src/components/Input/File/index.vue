@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getClassMods } from '@/services';
+import { getClassMods } from '@butnothero/tools';
 
 const props = defineProps({
   preset: {

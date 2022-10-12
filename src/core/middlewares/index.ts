@@ -1,6 +1,6 @@
 import { BootFileParams } from '@quasar/app-vite';
 import { NavigationGuardNext, RouteLocationNormalized } from 'vue-router';
-import { getBool } from '@/services';
+import { getBool } from '@butnothero/tools';
 
 interface RouterGuard {
   to: RouteLocationNormalized;

@@ -1,6 +1,6 @@
 import type { Theme } from '@/interfaces';
 import { Cookies, useMeta, useQuasar } from 'quasar';
-import { isServer } from '@/services';
+import { isServer } from '@/helpers';
 
 export const useAppTheme = () => {
   const getters = {

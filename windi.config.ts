@@ -44,37 +44,26 @@ export default defineConfig({
         box: '10px',
       },
     },
+    padding: {
+      box: '16px',
+      auto: 'auto',
+      'loader-wrap': '40px',
+    },
+    margin: {
+      box: '16px',
+      auto: 'auto',
+    },
+    width: {
+      'col-s': '60px',
+      'col-m': '100px',
+      'col-l': '120px',
+      full: '100%',
+    },
   },
   variants: {
     scrollbar: ['rounded'],
   },
   shortcuts: {
-    // Box Padding
-    'box-pl': 'pl-16px',
-    'box-pr': 'pr-16px',
-    'box-pt': 'pt-16px',
-    'box-pb': 'pb-16px',
-    'box-px': 'box-pl box-pr',
-    'box-py': 'box-pt box-pb',
-    'box-p': 'box-px box-py',
-
-    // Box Margin
-    'box-ml': 'ml-16px',
-    'box-mr': 'mr-16px',
-    'box-mt': 'mt-16px',
-    'box-mb': 'mb-16px',
-    'box-mx': 'box-ml box-mr',
-    'box-my': 'box-mt box-mb',
-    'box-m': 'box-mx box-my',
-
-    // Box Max-width
-    'box-max-w-xs': 'max-w-250px',
-    'box-max-w-s': 'max-w-350px',
-    'box-max-w-m': 'max-w-500px',
-    'box-max-w-l': 'max-w-750px',
-    'box-max-w-xl': 'max-w-900px',
-    'box-max-w-xxl': 'max-w-1200px',
-
     // Flex
     'flex-c-b': 'flex items-center justify-between',
     'flex-c-e': 'flex items-center justify-end',

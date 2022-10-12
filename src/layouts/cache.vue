@@ -5,7 +5,7 @@ export default defineComponent({
 </script>
 
 <script setup lang="ts">
-import { getRouteKey } from '@/services';
+import { getRouteKey } from '@/helpers';
 
 const props = defineProps({
   pageKey: {

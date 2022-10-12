@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useAppTheme } from '@/composables';
 import type { Theme } from '@/interfaces';
-import { getClassMods, getIconClassMods } from '@/services';
+import { getClassMods, getIconClassMods } from '@butnothero/tools';
 
 const props = defineProps({
   icon: {

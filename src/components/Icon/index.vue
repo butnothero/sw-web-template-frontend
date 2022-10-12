@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // TODO: Добавить поддержку слотов
 // Пример: https://www.npmjs.com/package/vue-load-image
-import { getClassMods } from '@/services';
+import { getClassMods } from '@butnothero/tools';
 
 const props = defineProps({
   src: {
@@ -20,6 +20,9 @@ const props = defineProps({
     type: [String, Array as () => string[]],
     default: '',
   },
+  rotate: {
+    default: '',
+  },
 });
 </script>
 
@@ -35,6 +38,10 @@ img.icon(
 
 <style scoped lang="scss">
 .icon {
+  @apply transition-transform select-none;
+
+  transform: rotate(v-bind('rotate'));
+
   filter: $color-icon-primary;
 
   &--white {

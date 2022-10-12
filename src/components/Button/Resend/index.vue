@@ -2,7 +2,6 @@
 import { createToast } from '@/components/Toast/lib';
 import { copyToClipboard } from 'quasar';
 import type { IconProps } from '@/interfaces';
-import { usePopupDownloadAppStore } from '@/stores';
 
 const props = defineProps({
   mode: {
@@ -23,8 +22,6 @@ const props = defineProps({
   },
 });
 
-const downloadApp = usePopupDownloadAppStore();
-
 const state = reactive({});
 
 const onClick = async () => {
@@ -33,10 +30,6 @@ const onClick = async () => {
   if (mode === 'clipboard') {
     createToast('Ссылка скопирована в буфер обмена', { type: 'success', position: 'top-center' });
     await copyToClipboard(clipboard);
-  }
-
-  if (useDownloadApp) {
-    downloadApp.toggleActive();
   }
 };
 </script>

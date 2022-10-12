@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import icon from '@/assets/svg/planet.svg';
-import { getClassMods } from '@/services';
+import { getClassMods } from '@/helpers';
 
 const props = defineProps({
   classMods: {

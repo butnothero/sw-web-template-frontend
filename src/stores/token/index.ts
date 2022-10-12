@@ -1,4 +1,4 @@
-import { parseJwt } from '@/services';
+import { parseJwt } from '@butnothero/tools';
 
 export const useTokenStore = defineStore('token', () => {
   const state = reactive({

@@ -14,7 +14,7 @@ useMeta({
 
 <template lang="pug">
 .page-home
-  Header(title="Header title")
+  Header(title='Header title')
   q-page-container.page-home__container
     q-page
       h1 Hello world

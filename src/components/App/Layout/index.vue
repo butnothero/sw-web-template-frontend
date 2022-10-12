@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { getRouteKey } from '@/services';
+import { getRouteKey } from '@/helpers';
 import { useAppTheme } from '@/composables';
 
 // const appTheme = useAppTheme();

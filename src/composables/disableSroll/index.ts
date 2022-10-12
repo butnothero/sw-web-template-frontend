@@ -1,4 +1,5 @@
-import { isClient, toggleBodyScroll } from '@/services';
+import { isClient } from '@/helpers';
+import { toggleBodyScroll } from '@butnothero/tools';
 
 export const useDisableScroll = (key = '') => {
   const route = useRoute();

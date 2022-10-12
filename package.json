@@ -8,20 +8,24 @@
   "private": true,
   "scripts": {
     "start": "node dist/ssr/index.js",
-    "dev": "quasar dev -m ssr",
+    "dev": "yarn run clean:generated && quasar dev -m ssr",
     "build": "quasar build -m ssr",
     "test": "echo \"No test specified\" && exit 0",
     "format": "prettier --write \"**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
     "lint": "eslint \"{src,apps,libs,test}/**/*.{js,ts,vue}\" --fix",
-    "windicss:analysis": "windicss-analysis"
+    "windicss:analysis": "windicss-analysis",
+    "clean:cache": "quasar clean",
+    "clean:generated": "rimraf src/auto-imports.d.ts && rimraf src/components.d.ts"
   },
   "dependencies": {
+    "@butnothero/axios-wrapper": "^1.1.0",
+    "@butnothero/tools": "^1.1.0",
+    "@butnothero/vue-use": "^1.0.0",
     "@egjs/hammerjs": "^2.0.17",
     "@quasar/extras": "^1.0.0",
     "@vueuse/core": "^8.9.4",
     "@vueuse/integrations": "^8.9.4",
     "axios": "^0.21.1",
-    "backend": "0.0.1",
     "lazysizes": "^5.3.2",
     "lodash": "^4.17.21",
     "mitt": "^3.0.0",
